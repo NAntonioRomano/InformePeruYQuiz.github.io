@@ -1,37 +1,490 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bahia de Samborombón</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Descubre el Perú | Riqueza, Biodiversidad y Cultura</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --red-peru: #d91023;
+            --dark-red: #9e0b18;
+            --gold: #f4c430;
+            --bg-light: #f8f9fa;
+            --text-dark: #2b2b2b;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: rgba(217, 16, 35, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        /* --- PORTADA CREATIVA (HERO SECTION) --- */
+        header.hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(158,11,24,0.6)), 
+                        url('https://images.unsplash.com/photo-1526392060635-9d6019884377?q=80&w=1920') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-badge {
+            background-color: var(--gold);
+            color: black;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .btn-scroll {
+            display: inline-block;
+            background-color: var(--red-peru);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217,16,35,0.4);
+        }
+
+        .btn-scroll:hover {
+            background-color: var(--gold);
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        /* --- SECCIONES PRINCIPALES --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark-red);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- RELIEVE Y CLIMA (TARJETAS) --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--red-peru);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card-header {
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .card-header h3 {
+            color: var(--dark-red);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-body {
+            padding: 0 20px 20px;
+        }
+
+        .card-body h4 {
+            color: #555;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* --- FLORA Y FAUNA (TABLA) --- */
+        .table-container {
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            background: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--red-peru);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+
+        tr:hover {
+            background-color: #fff3f3;
+        }
+
+        /* --- CULTURA (GRID) --- */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .culture-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .culture-item h3 {
+            color: var(--dark-red);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- FIESTAS TÍPICAS (TIMELINE / LISTA) --- */
+        .feasts-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .feast-card {
+            background: white;
+            border-left: 5px solid var(--gold);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .feast-card h3 {
+            color: var(--dark-red);
+            font-size: 1.2rem;
+        }
+
+        .feast-date {
+            color: #888;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-red);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            nav ul { flex-wrap: wrap; }
+            nav ul li { margin: 5px 10px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <nav class="nav-bar">
-            <div class="menu-toggle">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#fauna">Fauna</a></li>
-                <li><a href="#flora">Flora</a></li>
-                <li><a href="#mapa">Mapa</a></li>
-            </ul>
-        </nav>
-        <div class="hero-content">
-            <h1>Bahia de Samborombón</h1>
-            <h2>Refugio de vida silvestre</h2>
-        </div>
+
+    <!-- Navegación de acceso rápido -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#relieve-clima">Relieve y Clima</a></li>
+            <li><a href="#biodiversidad">Flora y Fauna</a></li>
+            <li><a href="#cultura">Cultura</a></li>
+            <li><a href="#festividades">Fiestas Típicas</a></li>
+        </ul>
+    </nav>
+
+    <!-- PORTADA CREATIVA Y VISUAL -->
+    <header class="hero" id="inicio">
+        <span class="hero-badge">Trabajo Escolar</span>
+        <h1>PERÚ</h1>
+        <p>Una tierra de biodiversidad milenaria, tradiciones vivas y paisajes extraordinarios.</p>
+        <a href="#relieve-clima" class="btn-scroll">Explorar Proyecto</a>
     </header>
 
-    <section style="height: 150vh; background-color: lightgray; padding-top: 5rem;">
-        <h2 style="text-align: center;">Contenido de la página</h2>
-        <p style="text-align: center; margin-top: 1rem;">Haz scroll para ver el efecto de la barra de navegación fija y el menú hamburguesa.</p>
+    <!-- SECCIÓN 1: RELIEVE Y CLIMA -->
+    <section id="relieve-clima">
+        <h2 class="section-title">Relieve y Clima</h2>
+        <div class="cards-grid">
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>La Costa</h3>
+                    <small>Desierto y Valles</small>
+                </div>
+                <div class="card-body">
+                    <h4>Relieve:</h4>
+                    <p>Estrecha franja árida a lo largo del océano Pacífico, caracterizada por pampas, dunas, desiertos y valles fértiles formados por ríos descendientes de los Andes.</p>
+                    <h4>Clima:</h4>
+                    <p>En la costa norte es cálido y semi-tropical; en la costa centro y sur es desértico, semi-cálido y templado, con alta humedad y escasas lluvias casi todo el año.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>La Sierra</h3>
+                    <small>Montañas y Altiplano</small>
+                </div>
+                <div class="card-body">
+                    <h4>Relieve:</h4>
+                    <p>Dominado por la Cordillera de los Andes, presenta picos nevados (como el Huascarán, a 6,768 m.s.n.m.), cañones profundos (Colca, Cotahuasi), valles interandinos y mesetas altiplánicas.</p>
+                    <h4>Clima:</h4>
+                    <p>Varía según la altitud. Templado y seco en los valles, hasta gélido con temperaturas bajo cero en las zonas de alta montaña y puna.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>La Selva</h3>
+                    <small>Amazonía Peruana</small>
+                </div>
+                <div class="card-body">
+                    <h4>Relieve:</h4>
+                    <p>Abarca la Selva Alta (ceja de montaña con relieve accidentado y valles) y la Selva Baja (llanura amazónica plana y ondulada con ríos caudalosos).</p>
+                    <h4>Clima:</h4>
+                    <p>Tropical, muy cálido y húmedo, con lluvias intensas entre diciembre y abril.</p>
+                </div>
+            </div>
+
+        </div>
     </section>
 
-    <script src="app.js"></script>
+    <!-- SECCIÓN 2: FLORA Y FAUNA -->
+    <section id="biodiversidad">
+        <h2 class="section-title">Flora y Fauna</h2>
+        <p style="text-align: center; margin-bottom: 25px; color: #555;">Perú concentra una de las mayores variedades de biodiversidad del planeta:</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Región</th>
+                        <th>Flora Emblemática</th>
+                        <th>Fauna Emblemática</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Costa</strong></td>
+                        <td>Algodón peruano, algarrobo, huarango, manglares y totora.</td>
+                        <td>Pingüino de Humboldt, lobo marino, pelícano y la anchoveta.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sierra</strong></td>
+                        <td>Árbol de la Quina (símbolo patrio), Puya Raimondii, Ichu y Queñua.</td>
+                        <td>Vicuña, llama, alpaca, cóndor andino y oso de anteojos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Selva</strong></td>
+                        <td>Caoba, cedro, orquídeas exóticas, victoria regia y plantas medicinales (uña de gato).</td>
+                        <td>Gallito de las rocas (ave nacional), jaguar, delfín rosado, guacamayo, anaconda y paiche.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CULTURA -->
+    <section id="cultura">
+        <h2 class="section-title">Cultura e Identidad</h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #555;">
+            La identidad peruana surge del mestizaje entre las milenarias civilizaciones prehispánicas (moche, nazca, inca, entre otras) y las influencias española, africana y asiática.
+        </p>
+
+        <div class="culture-grid">
+            <div class="culture-item">
+                <h3>Gastronomía</h3>
+                <p>Reconocida a nivel mundial. Destacan el Ceviche, el Lomo Saltado, la Causa Rellena, la Pachamanca (cocción bajo tierra) y el Juane amazónico, acompañados del Pisco Sour y la Chicha Morada.</p>
+            </div>
+
+            <div class="culture-item">
+                <h3>Lenguas</h3>
+                <p>El idioma oficial es el español. Son cooficiales las lenguas originarias en las zonas donde predominen, siendo las más habladas el Quechua y el Aymara, además de docenas de lenguas amazónicas (como el asháninka y el shipibo-conibo).</p>
+            </div>
+
+            <div class="culture-item">
+                <h3>Artesanías y Música</h3>
+                <p>Textilería tradicional andina, retablos ayacuchanos, cerámica de Chulucanas. La música abarca desde la marinera norteña y el vals criollo, hasta el huayno andino y la cumbia amazónica.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: FIESTAS TÍPICAS -->
+    <section id="festividades">
+        <h2 class="section-title">Fiestas Típicas</h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #555;">
+            Celebraciones tradicionales que fusionan la fe católica con la cosmovisión andina y amazónica:
+        </p>
+
+        <div class="feasts-list">
+            <div class="feast-card">
+                <h3>Inti Raymi (Fiesta del Sol)</h3>
+                <div class="feast-date">Cusco — 24 de junio</div>
+                <p>Recreación histórica del ritual inca de homenaje al dios Sol durante el solsticio de invierno en la fortaleza de Sacsayhuamán.</p>
+            </div>
+
+            <div class="feast-card">
+                <h3>Virgen de la Candelaria</h3>
+                <div class="feast-date">Puno — Febrero</div>
+                <p>Una de las muestras culturales más grandes de Sudamérica (Patrimonio de la Humanidad), caracterizada por impresionantes concursos de danzas con trajes de luces al borde del Lago Titicaca.</p>
+            </div>
+
+            <div class="feast-card">
+                <h3>Fiesta de San Juan</h3>
+                <div class="feast-date">Toda la Amazonía — 24 de junio</div>
+                <p>La fiesta central de la selva peruana. La población acude a los ríos para el "baño bendito" y se preparan miles de juanes para compartir.</p>
+            </div>
+
+            <div class="feast-card">
+                <h3>Señor de los Milagros</h3>
+                <div class="feast-date">Lima — Octubre</div>
+                <p>Una de las procesiones religiosas más multitudinarias del mundo, donde la marea de fieles viste el tradicional color morado.</p>
+            </div>
+
+            <div class="feast-card">
+                <h3>Carnavales de Cajamarca</h3>
+                <div class="feast-date">Cajamarca — Febrero / Marzo</div>
+                <p>Conocida como la "Capital del Carnaval Peruano", llena las calles de coplas, disfraces, agua y el ingreso del Ño Carnavalón.</p>
+            </div>
+
+            <div class="feast-card">
+                <h3>Semana Santa de Ayacucho</h3>
+                <div class="feast-date">Ayacucho — Marzo / Abril</div>
+                <p>Celebración religiosa andina con procesiones nocturnas iluminadas por miles de velas y alfombras florales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>Proyecto Escolar: Geografía y Cultura del Perú</p>
+        <p>&copy; 2026 — Presentación educativa</p>
+    </footer>
+
 </body>
 </html>
