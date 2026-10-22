@@ -297,12 +297,314 @@
             opacity: 0.9;
         }
 
+        /* --- QUIZ --- */
+        section {
+            scroll-margin-top: 72px;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+
+        .quiz-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            max-width: 760px;
+            margin: 0 auto;
+            border-top: 5px solid var(--gold);
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #888;
+        }
+
+        .quiz-progress__track {
+            flex: 1;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quiz-progress__bar {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--red-peru), var(--gold));
+            transition: width 0.4s ease;
+        }
+
+        .quiz-fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .quiz-question {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            color: var(--dark-red);
+            line-height: 1.45;
+            margin-bottom: 20px;
+            padding: 0;
+            scroll-margin-top: 90px;
+        }
+
+        .quiz-block {
+            display: block;
+            width: fit-content;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--dark-red);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option label {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 16px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            background: #fcfcfc;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .quiz-option label:hover {
+            border-color: var(--gold);
+            background: #fffdf5;
+        }
+
+        .quiz-option input {
+            margin-top: 4px;
+            accent-color: var(--red-peru);
+            flex-shrink: 0;
+        }
+
+        .quiz-option input:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 3px;
+        }
+
+        .quiz-option.is-correct label {
+            border-color: #2e7d32;
+            background: #f1f8f2;
+        }
+
+        .quiz-option.is-wrong label {
+            border-color: var(--red-peru);
+            background: #fff3f3;
+        }
+
+        .quiz-feedback {
+            display: none;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            scroll-margin-top: 90px;
+        }
+
+        .quiz-feedback.is-visible {
+            display: block;
+        }
+
+        .quiz-feedback:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        .quiz-feedback--ok {
+            background: #f1f8f2;
+            border-left: 5px solid #2e7d32;
+        }
+
+        .quiz-feedback--err {
+            background: #fff3f3;
+            border-left: 5px solid var(--red-peru);
+        }
+
+        .quiz-feedback h4 {
+            color: var(--dark-red);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .quiz-feedback p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-quiz {
+            background: var(--red-peru);
+            color: #fff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 15px rgba(217, 16, 35, 0.35);
+        }
+
+        .btn-quiz:hover:not(:disabled) {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .btn-quiz:disabled {
+            background: #ccc;
+            color: #fff;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-quiz--ghost {
+            background: transparent;
+            color: var(--dark-red);
+            border: 2px solid var(--dark-red);
+            box-shadow: none;
+        }
+
+        .btn-quiz--ghost:hover:not(:disabled) {
+            background: var(--dark-red);
+            color: #fff;
+        }
+
+        .quiz-score {
+            text-align: center;
+        }
+
+        .quiz-score__label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .quiz-score__number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark-red);
+            line-height: 1.1;
+        }
+
+        .quiz-score__number span {
+            font-size: 1.5rem;
+            color: #888;
+        }
+
+        .quiz-score__message {
+            font-size: 1.05rem;
+            color: #555;
+            max-width: 520px;
+            margin: 0 auto 10px;
+        }
+
+        .quiz-best {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .quiz-review {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0;
+            text-align: left;
+        }
+
+        .quiz-review li {
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: #fafafa;
+            border-left: 4px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+        }
+
+        .quiz-review li.is-correct {
+            border-left-color: #2e7d32;
+            background: #f1f8f2;
+        }
+
+        .quiz-review li.is-wrong {
+            border-left-color: var(--red-peru);
+            background: #fff3f3;
+        }
+
+        .quiz-review strong {
+            display: block;
+            color: var(--dark-red);
+            margin-bottom: 4px;
+        }
+
+        .quiz-review span {
+            display: block;
+            color: #555;
+        }
+
+        .quiz-hidden {
+            display: none;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
             nav ul { flex-wrap: wrap; }
             nav ul li { margin: 5px 10px; }
+            section { scroll-margin-top: 125px; }
+            .quiz-card { padding: 22px 18px; }
+            .quiz-question { font-size: 1.15rem; }
+            .quiz-progress { flex-wrap: wrap; gap: 8px; }
+            .quiz-progress__track { order: 3; flex-basis: 100%; }
+            .quiz-actions .btn-quiz { flex: 1 1 auto; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .quiz-progress__bar,
+            .btn-quiz,
+            .quiz-option label {
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -316,6 +618,7 @@
             <li><a href="#biodiversidad">Flora y Fauna</a></li>
             <li><a href="#cultura">Cultura</a></li>
             <li><a href="#festividades">Fiestas Típicas</a></li>
+            <li><a href="#quiz">Quiz</a></li>
         </ul>
     </nav>
 
@@ -480,11 +783,375 @@
         </div>
     </section>
 
+    <!-- SECCIÓN 5: QUIZ -->
+    <section id="quiz">
+        <h2 class="section-title">Quiz: ¿Cuánto aprendiste?</h2>
+        <p class="quiz-intro">12 preguntas para comprobar lo que leíste en esta página. Cada respuesta viene con su explicación, así que sirven para repasar: si fallás, aprendés algo nuevo.</p>
+
+        <div class="quiz-card" id="quiz-root">
+            <noscript>
+                <p style="text-align: center; color: #555;">Necesitás activar JavaScript en el navegador para jugar el quiz.</p>
+            </noscript>
+        </div>
+    </section>
+
     <!-- PIE DE PÁGINA -->
     <footer>
         <p>Proyecto Escolar: Geografía y Cultura del Perú</p>
         <p>&copy; 2026 — Presentación educativa</p>
     </footer>
+
+    <!-- QUIZ: 12 preguntas basadas en la información de esta misma página -->
+    <script>
+    (function () {
+        'use strict';
+
+        const QUIZ_QUESTIONS = [
+            {
+                block: 'Relieve y Clima',
+                q: 'Un turista llega en marzo a una zona con temperaturas muy cálidas y lluvias intensas. ¿En qué región del Perú se encuentra?',
+                options: [
+                    'En la Costa, porque en el centro y el sur es desértica y casi nunca llueve.',
+                    'En la Selva, porque su clima es tropical, muy cálido y húmedo, con lluvias intensas entre diciembre y abril.',
+                    'En la Sierra, porque en los valles el clima es templado y seco.',
+                    'En la Sierra, porque en la alta montaña las temperaturas bajan de cero.'
+                ],
+                correct: 1,
+                explain: 'La Selva es la única región de clima tropical: muy cálido, muy húmedo y con lluvias intensas entre diciembre y abril. En la Sierra hace frío, y en la Costa casi no llueve.'
+            },
+            {
+                block: 'Relieve y Clima',
+                q: 'El pico nevado de 6.768 m.s.n.m., los cañones de Colca y Cotahuasi y las mesetas altiplánicas son características de:',
+                options: [
+                    'La Costa',
+                    'La Selva',
+                    'La Sierra',
+                    'Las tres regiones por igual'
+                ],
+                correct: 2,
+                explain: 'La Sierra está dominada por la Cordillera de los Andes: allí están el Huascarán (6.768 m.s.n.m.), los cañones de Colca y Cotahuasi, los valles interandinos y las mesetas altiplánicas.'
+            },
+            {
+                block: 'Relieve y Clima',
+                q: 'Una expedición describe un terreno plano y ondoso, atravesado por ríos caudalosos, en plena Amazonía. ¿En qué parte de la Selva está?',
+                options: [
+                    'En la Selva Alta, la ceja de montaña con relieve accidentado y valles.',
+                    'En la Selva Baja, la llanura amazónica plana y ondulada con ríos caudalosos.',
+                    'En el Altiplano, con sus mesetas y su clima gélido.',
+                    'En la Cordillera, donde están los picos nevados.'
+                ],
+                correct: 1,
+                explain: 'La Selva Alta es la ceja de montaña (relieve accidentado y valles) y la Selva Baja es la llanura amazónica plana y ondosa con ríos caudalosos. El terreno descrito es la Selva Baja.'
+            },
+            {
+                block: 'Flora y Fauna',
+                q: '¿Cuál de estos pares reúne los dos elementos que la tabla ubica en la MISMA región?',
+                options: [
+                    'Quina y delfín rosado.',
+                    'Ichu y paiche.',
+                    'Algodón peruano y pingüino de Humboldt.',
+                    'Cóndor andino y guacamayo.'
+                ],
+                correct: 2,
+                explain: 'En la fila Costa de la tabla están el algodón peruano (flora) y el pingüino de Humboldt (fauna). Las otras tres opciones mezclan la Sierra con la Selva.'
+            },
+            {
+                block: 'Flora y Fauna',
+                q: 'Un parque nacional protege al cóndor andino junto al Árbol de la Quina (símbolo patrio del Perú) y a la Puya Raimondii. ¿De qué región estamos hablando?',
+                options: [
+                    'De la Costa, donde viven el lobo marino y el pelícano.',
+                    'De la Selva, donde vive el jaguar.',
+                    'De la Selva Alta, junto al guacamayo.',
+                    'De la Sierra, donde el cóndor andino es fauna emblemática.'
+                ],
+                correct: 3,
+                explain: 'En la tabla, la Sierra lista como flora emblemática la Quina, la Puya Raimondii, el ichu y la queñua, y como fauna emblemática a la vicuña, la llama, la alpaca, el cóndor andino y el oso de anteojos.'
+            },
+            {
+                block: 'Flora y Fauna',
+                q: 'Según la tabla de la página, ¿cuál de estos animales NO es fauna emblemática de la Selva?',
+                options: [
+                    'El jaguar',
+                    'El anaconda',
+                    'La vicuña',
+                    'El paiche'
+                ],
+                correct: 2,
+                explain: 'La vicuña es fauna emblemática de la Sierra. El jaguar, el anaconda y el paiche sí aparecen en la fila de la Selva.'
+            },
+            {
+                block: 'Flora y Fauna',
+                q: 'Además del pasto ichu y de la queñua, la flora emblemática de la Sierra incluye:',
+                options: [
+                    'La caoba y el cedro',
+                    'El algarrobo y el huarango',
+                    'El Árbol de la Quina y la Puya Raimondii',
+                    'El mangle y la totora'
+                ],
+                correct: 2,
+                explain: 'La flora emblemática de la Sierra es el Árbol de la Quina (símbolo patrio), la Puya Raimondii, el ichu y la queñua. La caoba y el cedro son de la Selva; el algarrobo, el huarango, el mangle y la totora son de la Costa.'
+            },
+            {
+                block: 'Cultura',
+                q: '¿Cuál de estos platos se prepara con cocción bajo tierra?',
+                options: [
+                    'La Causa Rellena',
+                    'El Lomo Saltado',
+                    'La Pachamanca',
+                    'El Juane amazónico'
+                ],
+                correct: 2,
+                explain: 'La página señala a la Pachamanca como la preparación de cocción bajo tierra. El Juane es el otro plato amazónico de la lista, pero no es el que se cocina bajo tierra: el Ceviche, el Lomo Saltado y la Causa Rellena se preparan de otras maneras.'
+            },
+            {
+                block: 'Cultura',
+                q: 'El asháninka y el shipibo-conibo son:',
+                options: [
+                    'Las dos lenguas más habladas de la Sierra.',
+                    'Lenguas de las civilizaciones prehispánicas nombradas en la página.',
+                    'Dialectos del español que se hablan solo en la costa.',
+                    'Lenguas originarias amazónicas, cooficiales donde predominan.'
+                ],
+                correct: 3,
+                explain: 'El español es el idioma oficial; el Quechua y el Aymara son las lenguas originarias más habladas, y existen además docenas de lenguas amazónicas como el asháninka y el shipibo-conibo, cooficiales en las zonas donde predominan.'
+            },
+            {
+                block: 'Fiestas Típicas',
+                q: 'El 24 de junio, en la fortaleza de Sacsayhuamán, se recrea el ritual inca de homenaje al dios Sol durante el solsticio de invierno. ¿A qué fiesta asiste la familia?',
+                options: [
+                    'A la Virgen de la Candelaria, en Puno',
+                    'Al Señor de los Milagros, en Lima',
+                    'A la Fiesta de San Juan, en la Amazonía',
+                    'Al Inti Raymi (Fiesta del Sol), en Cusco'
+                ],
+                correct: 3,
+                explain: 'El Inti Raymi se celebra en Cusco el 24 de junio y recrea el ritual inca de homenaje al Sol en el solsticio de invierno. La Fiesta de San Juan también es del 24 de junio, pero en toda la Amazonía.'
+            },
+            {
+                block: 'Fiestas Típicas',
+                q: 'El 24 de junio, en toda la Amazonía, la población acude a los ríos para el "baño bendito" y prepara miles de juanes para compartir. ¿Qué fiesta se celebra?',
+                options: [
+                    'La Fiesta de San Juan, la fiesta central de la selva peruana',
+                    'El Inti Raymi, en Cusco',
+                    'La Semana Santa de Ayacucho',
+                    'Los Carnavales de Cajamarca'
+                ],
+                correct: 0,
+                explain: 'La Fiesta de San Juan es la fiesta central de la selva peruana: el 24 de junio, baño bendito en los ríos y miles de juanes. Ojo: el Inti Raymi también es del 24 de junio, pero es en Cusco.'
+            },
+            {
+                block: 'Fiestas Típicas',
+                q: 'Una festividad con concursos de danzas con trajes de luces, al borde del Lago Titicaca y declarada Patrimonio de la Humanidad, se celebra en febrero en:',
+                options: [
+                    'Puno',
+                    'Cusco',
+                    'Ayacucho',
+                    'Cajamarca'
+                ],
+                correct: 0,
+                explain: 'Es la Virgen de la Candelaria, en Puno (febrero). El Inti Raymi es en Cusco (24 de junio), la Semana Santa en Ayacucho (marzo/abril) y los Carnavales en Cajamarca (febrero/marzo).'
+            }
+        ];
+
+        const STORAGE_KEY = 'peruQuizBest';
+        const root = document.getElementById('quiz-root');
+
+        let current = 0;
+        let score = 0;
+        let answers = [];
+        let revealed = false;
+
+        function getBest() {
+            try {
+                return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10) || 0;
+            } catch (e) {
+                return 0;
+            }
+        }
+
+        function setBest(value) {
+            try {
+                localStorage.setItem(STORAGE_KEY, String(value));
+            } catch (e) {
+                /* localStorage puede estar bloqueado: el quiz sigue funcionando */
+            }
+        }
+
+        function optionsHtml(q, index) {
+            const chosen = answers[index];
+            return q.options.map(function (opt, i) {
+                const checked = chosen === i ? ' checked' : '';
+                const disabled = revealed ? ' disabled' : '';
+                let state = '';
+                if (revealed) {
+                    if (i === q.correct) {
+                        state = ' is-correct';
+                    } else if (chosen === i) {
+                        state = ' is-wrong';
+                    }
+                }
+                return '<li class="quiz-option' + state + '">' +
+                    '<label for="quiz-op-' + index + '-' + i + '">' +
+                    '<input type="radio" id="quiz-op-' + index + '-' + i + '" name="quiz-answer" value="' + i + '"' + checked + disabled + '>' +
+                    '<span>' + opt + '</span>' +
+                    '</label></li>';
+            }).join('');
+        }
+
+        function renderQuestion() {
+            const q = QUIZ_QUESTIONS[current];
+            const chosen = answers[current];
+            const hasChoice = chosen !== undefined && chosen !== null;
+            const progress = Math.round((current / QUIZ_QUESTIONS.length) * 100);
+
+            root.innerHTML =
+                '<div class="quiz-progress">' +
+                    '<span>Pregunta ' + (current + 1) + ' de ' + QUIZ_QUESTIONS.length + '</span>' +
+                    '<span class="quiz-progress__track"><span class="quiz-progress__bar" style="width:' + progress + '%"></span></span>' +
+                    '<span>' + score + ' ' + (score === 1 ? 'acierto' : 'aciertos') + '</span>' +
+                '</div>' +
+                '<fieldset class="quiz-fieldset">' +
+                    '<legend class="quiz-question"><span class="quiz-block">' + q.block + '</span>' + q.q + '</legend>' +
+                    '<ul class="quiz-options">' + optionsHtml(q, current) + '</ul>' +
+                '</fieldset>' +
+                '<div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite" tabindex="-1"></div>' +
+                '<div class="quiz-actions">' +
+                    (revealed ? '' : '<button type="button" class="btn-quiz" id="quiz-check" disabled>Comprobar</button>') +
+                    (revealed ? '<button type="button" class="btn-quiz" id="quiz-next">' + (current === QUIZ_QUESTIONS.length - 1 ? 'Ver resultado' : 'Siguiente') + '</button>' : '') +
+                '</div>';
+
+            const inputs = root.querySelectorAll('input[name="quiz-answer"]');
+            inputs.forEach(function (input) {
+                input.addEventListener('change', function () {
+                    answers[current] = parseInt(input.value, 10);
+                    const check = root.querySelector('#quiz-check');
+                    if (check) {
+                        check.disabled = false;
+                    }
+                });
+            });
+
+            const check = root.querySelector('#quiz-check');
+            if (check) {
+                check.disabled = !hasChoice;
+                check.addEventListener('click', checkAnswer);
+            }
+
+            const next = root.querySelector('#quiz-next');
+            if (next) {
+                next.addEventListener('click', nextQuestion);
+            }
+        }
+
+        function checkAnswer() {
+            if (revealed) {
+                return;
+            }
+            const q = QUIZ_QUESTIONS[current];
+            const chosen = answers[current];
+            if (chosen === undefined || chosen === null) {
+                return;
+            }
+
+            revealed = true;
+            const ok = chosen === q.correct;
+            if (ok) {
+                score++;
+            }
+
+            renderQuestion();
+
+            const feedback = root.querySelector('#quiz-feedback');
+            feedback.className = 'quiz-feedback is-visible ' + (ok ? 'quiz-feedback--ok' : 'quiz-feedback--err');
+            feedback.innerHTML =
+                '<h4>' + (ok ? '¡Correcto!' : 'Incorrecto') + '</h4>' +
+                '<p>' + (ok ? '' : 'La respuesta correcta era <strong>' + q.options[q.correct] + '</strong>. ') + q.explain + '</p>';
+            feedback.focus();
+        }
+
+        function nextQuestion() {
+            if (!revealed) {
+                return;
+            }
+            if (current < QUIZ_QUESTIONS.length - 1) {
+                current++;
+                revealed = false;
+                renderQuestion();
+                focusQuestion();
+            } else {
+                renderResults();
+            }
+        }
+
+        function focusQuestion() {
+            const legend = root.querySelector('.quiz-question');
+            if (legend) {
+                legend.setAttribute('tabindex', '-1');
+                legend.focus();
+            }
+        }
+
+        function reviewHtml() {
+            return QUIZ_QUESTIONS.map(function (q, i) {
+                const ok = answers[i] === q.correct;
+                const given = answers[i] !== undefined && answers[i] !== null ? q.options[answers[i]] : 'sin responder';
+                return '<li class="' + (ok ? 'is-correct' : 'is-wrong') + '">' +
+                    '<strong>' + (ok ? 'Correcto' : 'Incorrecto') + ' — ' + q.q + '</strong>' +
+                    '<span>Tu respuesta: ' + given + '</span>' +
+                    (ok ? '' : '<span>Respuesta correcta: ' + q.options[q.correct] + '</span>') +
+                    '<span>' + q.explain + '</span>' +
+                    '</li>';
+            }).join('');
+        }
+
+        function renderResults() {
+            const total = QUIZ_QUESTIONS.length;
+            const pct = Math.round((score / total) * 100);
+            let message;
+            if (pct >= 83) {
+                message = '¡Excelente! Leíste la página con muy buen ojo, y las explicaciones te dejaron todo claro.';
+            } else if (pct >= 60) {
+                message = '¡Muy bien! Repasá las preguntas que fallaste con las explicaciones y volvé a intentarlo.';
+            } else {
+                message = 'Te conviene releer la página con calma: la próxima vez vas a acertar muchas más.';
+            }
+
+            const best = Math.max(getBest(), score);
+            setBest(best);
+
+            root.innerHTML =
+                '<div class="quiz-score">' +
+                    '<p class="quiz-score__label">Tu resultado</p>' +
+                    '<p class="quiz-score__number">' + score + '<span>/' + total + '</span></p>' +
+                    '<p class="quiz-score__message">' + message + '</p>' +
+                    '<p class="quiz-best">Mejor puntaje: ' + best + '/' + total + '</p>' +
+                    '<div class="quiz-actions" style="justify-content: center;">' +
+                        '<button type="button" class="btn-quiz" id="quiz-restart">Repetir el quiz</button>' +
+                        '<button type="button" class="btn-quiz btn-quiz--ghost" id="quiz-review-btn">Ver respuestas</button>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="quiz-hidden" id="quiz-review-wrap"><ul class="quiz-review">' + reviewHtml() + '</ul></div>';
+
+            root.querySelector('#quiz-restart').addEventListener('click', function () {
+                current = 0;
+                score = 0;
+                answers = [];
+                revealed = false;
+                renderQuestion();
+                focusQuestion();
+            });
+
+            const reviewBtn = root.querySelector('#quiz-review-btn');
+            const reviewWrap = root.querySelector('#quiz-review-wrap');
+            reviewBtn.addEventListener('click', function () {
+                const hidden = reviewWrap.classList.toggle('quiz-hidden');
+                reviewBtn.textContent = hidden ? 'Ver respuestas' : 'Ocultar respuestas';
+            });
+        }
+
+        renderQuestion();
+    })();
+    </script>
 
 </body>
 </html>
